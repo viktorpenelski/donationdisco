@@ -1,5 +1,10 @@
-const DISPLAY_INTERVAL = 5000;
-const NAME_FIELD = ".center";
+// CONFIG
+const REFRESH_INTERVAL = 5000;
+const KEEP_LAST_NAME_ON_EMPTY = true;
+
+// CONST ELEMENTS FROM index.html
+const CENTER_DIV_ID = "#centerDiv";
+const CENTER_SPAN_ID = "#centeredNameSpan";
 
 var queue = [];
 
@@ -9,23 +14,29 @@ fetch('.streamlabs_key')
     connectToStreamlabsSocket(socketToken);
   });
 
-var intervalID = window.setInterval(callback, DISPLAY_INTERVAL);
+window.setInterval(callback, REFRESH_INTERVAL);
 
 function callback() {
   if (queue.length == 0) {
     console.log("Queue is empty");
+
+    if (!KEEP_LAST_NAME_ON_EMPTY) {
+      changeName("");
+    }
+
     return;
   }
 
   // queue.shift has O(n) runtime complexity. This is not an issue for the expected load.
-  // if it becomes an issue in the future, consider using an O(1) implementaiton e.g. Queue.js
+  // if it becomes an issue in the future, consider using an O(1) implementaiton like Queue.js
   let lastName = queue.shift();
   console.log("Dequeueing: " + lastName);
   changeName(lastName);
 }
 
 function changeName(name) {
-  $(NAME_FIELD).text(name);
+  $(CENTER_SPAN_ID).text(name);
+  $(CENTER_DIV_ID).bigtext();
 }
 
 function connectToStreamlabsSocket(token) {

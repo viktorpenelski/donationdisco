@@ -23,4 +23,21 @@ And then run `http-server`.
 
 By default, the page will be accessable on `localhost:8080`
 
-3. If the API key is correct and the server started correctly, you should be able to run a 'Test Donation' using the [streamlabs alertbox](https://streamlabs.com/dashboard#/alertbox) and it should change the page content automatically.
+3. If the API key is valid and the server started correctly, you should be able to run a 'Test Donation' using the [streamlabs alertbox](https://streamlabs.com/dashboard#/alertbox) and the page content should automatically change.
+
+---
+
+### Configuration
+
+the `streamlabs-socket-client.js` is configurable via properties on top
+
+* `REFRESH_INTERVAL` - how often to attempt to change the displayed name on the page in `ms`.
+* `KEEP_LAST_NAME_ON_EMPTY` - When the queue is empty: `true` keep the last displayed name. `false` clear the content.
+
+---
+
+### Thanks to:
+
+- [jQuery](https://jquery.com/)
+- [BigText](https://github.com/zachleat/BigText)
+- [socket.io-client](https://github.com/socketio/socket.io-client)

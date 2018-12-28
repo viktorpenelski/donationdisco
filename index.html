@@ -1,6 +1,8 @@
+<!-- dependencies for the streamlabs-client. If this code is to be ran on actual client side, dependencies should be served by the server -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js' type='text/javascript'></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+<script src="lib/bigtext.js"></script>
 
 <script src="streamlabs-socket-client.js"></script>
 
@@ -11,15 +13,16 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Charity Donation Disco</title>
-  <meta name="description" content="Charity Donation Disco">
+  <title>Donation Disco</title>
+  <meta name="description" content="Donation Disco">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <div class='fullscreenDiv'>
-    <div class="center">Hello World</div>
-  </div>​
+
+  <div id="centerDiv">
+      <span id="centeredNameSpan">John Doe</span>
+  </div>
 
 </body>
 
