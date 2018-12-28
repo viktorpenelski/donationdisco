@@ -23,7 +23,6 @@ function callback() {
     if (!KEEP_LAST_NAME_ON_EMPTY) {
       changeName("");
     }
-
     return;
   }
 
@@ -37,6 +36,7 @@ function callback() {
 function changeName(name) {
   $(CENTER_SPAN_ID).text(name);
   $(CENTER_DIV_ID).bigtext();
+  $('body').css('background', randomColor({luminosity: 'dark'}));
 }
 
 function connectToStreamlabsSocket(token) {

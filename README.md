@@ -41,3 +41,4 @@ the `streamlabs-socket-client.js` is configurable via properties on top
 - [jQuery](https://jquery.com/)
 - [BigText](https://github.com/zachleat/BigText)
 - [socket.io-client](https://github.com/socketio/socket.io-client)
+- [randomColor](https://github.com/davidmerfield/randomColor)
