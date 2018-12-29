@@ -1,11 +1,14 @@
 // CONFIG
-const REFRESH_INTERVAL = 5000;
+const REFRESH_INTERVAL = 10000;
+const BLINK_INTERVAL = 500;
+const BLINK_ITERATIONS = 10;
 const KEEP_LAST_NAME_ON_EMPTY = true;
 
 // CONST ELEMENTS FROM index.html
 const CENTER_DIV_ID = "#centerDiv";
 const CENTER_SPAN_ID = "#centeredNameSpan";
 
+var colorCycleIteration = 0;
 var queue = [];
 
 fetch('.streamlabs_key')
@@ -31,12 +34,28 @@ function callback() {
   let lastName = queue.shift();
   console.log("Dequeueing: " + lastName);
   changeName(lastName);
+  colorCycleIteration = 0;
+  animation_loop();
+}
+
+function animation_loop() {
+  changeBackground();
+  setTimeout(function () {
+    colorCycleIteration++;
+    console.log(colorCycleIteration);
+    if (colorCycleIteration < BLINK_ITERATIONS) {
+      animation_loop();
+    }
+  }, BLINK_INTERVAL);
+};
+
+function changeBackground() {
+  $('body').css('background', randomColor({ luminosity: 'dark' }));
 }
 
 function changeName(name) {
   $(CENTER_SPAN_ID).text(name);
   $(CENTER_DIV_ID).bigtext();
-  $('body').css('background', randomColor({luminosity: 'dark'}));
 }
 
 function connectToStreamlabsSocket(token) {
